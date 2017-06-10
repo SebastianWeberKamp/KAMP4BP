@@ -8,15 +8,18 @@ import org.eclipse.emf.compare.ReferenceChange;
 import org.palladiosimulator.pcm.core.entity.NamedElement;
 import org.palladiosimulator.pcm.usagemodel.UsageModel;
 
+import edu.kit.ipd.sdq.kamp.derivation.AbstractDifferenceCalculation;
 import edu.kit.ipd.sdq.kamp.workplan.Activity;
 import edu.kit.ipd.sdq.kamp.workplan.BasicActivity;
 import edu.kit.ipd.sdq.kamp4bp.core.BPActivityElementType;
 import edu.kit.ipd.sdq.kamp4bp.core.BPArchitectureVersion;
 import edu.kit.ipd.sdq.kamp4is.core.ISActivityType;
-import edu.kit.ipd.sdq.kamp4is.core.derivation.AbstractISDifferenceCalculation;
+import edu.kit.ipd.sdq.kamp4is.core.derivation.ISDifferenceCalculation;
 
-public class BPDifferenceCalculation extends AbstractISDifferenceCalculation<BPArchitectureVersion> {
+public class BPDifferenceCalculation extends AbstractDifferenceCalculation<BPArchitectureVersion> {
 
+	private final ISDifferenceCalculation isDifferenceCalculation = 
+			new ISDifferenceCalculation();
 	private final BPInternalModificationDerivation bpInternalModificationDerivation = 
 			new BPInternalModificationDerivation();
 	private final BPSubactivityDerivation bpSubactivityDerivation = 
@@ -24,7 +27,7 @@ public class BPDifferenceCalculation extends AbstractISDifferenceCalculation<BPA
 	
 	@Override
 	public List<Activity> deriveWorkplan(BPArchitectureVersion baseVersion, BPArchitectureVersion targetVersion) {
-		List<Activity> activityList = super.deriveWorkplan(baseVersion, targetVersion);
+		List<Activity> activityList = this.isDifferenceCalculation.deriveWorkplan(baseVersion, targetVersion);
 		activityList.addAll(this.deriveAddAndRemoveActivities(calculateDiffModel(
 				baseVersion.getDataModel(), targetVersion.getDataModel())));
 		for (Entry<String, UsageModel> baseUsageModelEntry: baseVersion.getUsageModels().entrySet()) {
@@ -43,13 +46,13 @@ public class BPDifferenceCalculation extends AbstractISDifferenceCalculation<BPA
 	
 	@Override
 	public void checkForDifferencesAndAddToWorkplan(Diff diffElement, List<Activity> workplan) {
-		super.checkForDifferencesAndAddToWorkplan(diffElement, workplan);
+		this.isDifferenceCalculation.checkForDifferencesAndAddToWorkplan(diffElement, workplan);
 		for (BPActivityElementType elementType: BPActivityElementType.getTopLevelArchitectureActivityElementTypes()) {
 			if (detectionRuleAdded(diffElement, elementType.getElementClass())) {
 				NamedElement architectureElement = (NamedElement)(((ReferenceChange)diffElement).getValue());
 				Activity newActivity = new Activity(ISActivityType.ARCHITECTUREMODELDIFF, elementType, 
 						architectureElement, architectureElement.getEntityName(), null, BasicActivity.ADD, 
-						AbstractISDifferenceCalculation.createAddElementDescription(architectureElement));
+						ISDifferenceCalculation.createAddElementDescription(architectureElement));
 				workplan.add(newActivity);
 				this.bpSubactivityDerivation.deriveSubacitvities(architectureElement, newActivity);
 				break;
@@ -58,7 +61,7 @@ public class BPDifferenceCalculation extends AbstractISDifferenceCalculation<BPA
 				NamedElement architectureElement = (NamedElement)(((ReferenceChange)diffElement).getValue());
 				Activity newActivity = new Activity(ISActivityType.ARCHITECTUREMODELDIFF, elementType,
 						architectureElement, architectureElement.getEntityName(), null, BasicActivity.REMOVE, 
-						AbstractISDifferenceCalculation.createRemoveElementDescription(architectureElement));
+						ISDifferenceCalculation.createRemoveElementDescription(architectureElement));
 				workplan.add(newActivity);
 				this.bpSubactivityDerivation.deriveSubacitvities(architectureElement, newActivity);
 				break;
