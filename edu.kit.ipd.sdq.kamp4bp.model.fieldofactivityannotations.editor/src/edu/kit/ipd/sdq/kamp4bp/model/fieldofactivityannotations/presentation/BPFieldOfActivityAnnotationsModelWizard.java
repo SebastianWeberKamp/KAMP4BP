@@ -2,7 +2,6 @@
  */
 package edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.presentation;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,176 +12,149 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
-import org.eclipse.emf.common.CommonPlugin;
-
-import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.xmi.XMLResource;
-
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-
 import org.eclipse.core.runtime.IProgressMonitor;
-
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.dialogs.MessageDialog;
-
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
-
 import org.eclipse.swt.SWT;
-
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.ModifyEvent;
-
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
-import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-
-import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.ui.part.ISetSelectionTarget;
-
-import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsFactory;
-import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsPackage;
-import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.provider.BPFieldOfActivityAnnotationsEditPlugin;
-import edu.kit.ipd.sdq.kamp4bp.core.BPArchitectureModelFactoryFacade;
-import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsRepository;
-import org.eclipse.core.runtime.Path;
-
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
+import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.part.ISetSelectionTarget;
 
+import edu.kit.ipd.sdq.kamp4bp.core.BPArchitectureModelFactoryFacade;
+import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsFactory;
+import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsPackage;
+import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsRepository;
+import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.provider.BPFieldOfActivityAnnotationsEditPlugin;
 
 /**
- * This is a simple wizard for creating a new model file.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is a simple wizard for creating a new model file. <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements INewWizard {
 	/**
-	 * The supported extensions for created files.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The supported extensions for created files. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<String> FILE_EXTENSIONS =
-		Collections.unmodifiableList(Arrays.asList(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_BPFieldOfActivityAnnotationsEditorFilenameExtensions").split("\\s*,\\s*")));
-
+	public static final List<String> FILE_EXTENSIONS = Collections
+			.unmodifiableList(Arrays.asList(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE
+					.getString("_UI_BPFieldOfActivityAnnotationsEditorFilenameExtensions").split("\\s*,\\s*")));
 	/**
-	 * A formatted list of supported file extensions, suitable for display.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A formatted list of supported file extensions, suitable for display. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final String FORMATTED_FILE_EXTENSIONS =
-		BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_BPFieldOfActivityAnnotationsEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
-
+	public static final String FORMATTED_FILE_EXTENSIONS = BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE
+			.getString("_UI_BPFieldOfActivityAnnotationsEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 	/**
-	 * This caches an instance of the model package.
-	 * <!-- begin-user-doc -->
+	 * This caches an instance of the model package. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BPFieldOfActivityAnnotationsPackage bpFieldOfActivityAnnotationsPackage = BPFieldOfActivityAnnotationsPackage.eINSTANCE;
-
 	/**
-	 * This caches an instance of the model factory.
-	 * <!-- begin-user-doc -->
+	 * This caches an instance of the model factory. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	protected BPFieldOfActivityAnnotationsFactory bpFieldOfActivityAnnotationsFactory = bpFieldOfActivityAnnotationsPackage.getBPFieldOfActivityAnnotationsFactory();
-
+	protected BPFieldOfActivityAnnotationsFactory bpFieldOfActivityAnnotationsFactory = bpFieldOfActivityAnnotationsPackage
+			.getBPFieldOfActivityAnnotationsFactory();
 	/**
-	 * This is the file creation page.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @generated
 	 */
 	protected BPFieldOfActivityAnnotationsModelWizardNewFileCreationPage newFileCreationPage;
-
 	/**
-	 * This is the initial object creation page.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is the initial object creation page. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BPFieldOfActivityAnnotationsModelWizardInitialObjectCreationPage initialObjectCreationPage;
-
 	/**
-	 * Remember the selection during initialization for populating the default container.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Remember the selection during initialization for populating the default
+	 * container. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected IStructuredSelection selection;
-
 	/**
-	 * Remember the workbench during initialization.
-	 * <!-- begin-user-doc -->
+	 * Remember the workbench during initialization. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected IWorkbench workbench;
-
 	/**
 	 * Caches the names of the types that can be created as the root object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected List<String> initialObjectNames;
 
 	/**
-	 * This just records the information.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This just records the information. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getImage("full/wizban/NewBPFieldOfActivityAnnotations")));
+		setDefaultPageImageDescriptor(
+				ExtendedImageRegistry.INSTANCE.getImageDescriptor(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE
+						.getImage("full/wizban/NewBPFieldOfActivityAnnotations")));
 	}
 
 	/**
 	 * Returns the names of the types that can be created as the root object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Collection<String> getInitialObjectNames() {
@@ -190,7 +162,7 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 			initialObjectNames = new ArrayList<String>();
 			for (EClassifier eClassifier : bpFieldOfActivityAnnotationsPackage.getEClassifiers()) {
 				if (eClassifier instanceof EClass) {
-					EClass eClass = (EClass)eClassifier;
+					EClass eClass = (EClass) eClassifier;
 					if (!eClass.isAbstract()) {
 						initialObjectNames.add(eClass.getName());
 					}
@@ -202,22 +174,22 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 	}
 
 	/**
-	 * Create a new model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Create a new model. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	protected EObject createInitialModel() {
 		// --Start manually modified code
-		BPFieldOfActivityAnnotationsRepository repository = BPArchitectureModelFactoryFacade.createFieldOfActivityAnnotationsRepository();
+		BPFieldOfActivityAnnotationsRepository repository = BPArchitectureModelFactoryFacade
+				.createFieldOfActivityAnnotationsRepository();
 		return repository;
 		// --End manually modified code
 	}
 
 	/**
-	 * Do the work after everything is specified.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Do the work after everything is specified. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -226,52 +198,44 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 			// Remember the file.
 			//
 			final IFile modelFile = getModelFile();
-
 			// Do the work within an operation.
 			//
-			WorkspaceModifyOperation operation =
-				new WorkspaceModifyOperation() {
-					@Override
-					protected void execute(IProgressMonitor progressMonitor) {
-						try {
-							// Create a resource set
-							//
-							ResourceSet resourceSet = new ResourceSetImpl();
-
-							// Get the URI of the model file.
-							//
-							URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
-
-							// Create a resource for this file.
-							//
-							Resource resource = resourceSet.createResource(fileURI);
-
-							// Add the initial model object to the contents.
-							//
-							EObject rootObject = createInitialModel();
-							if (rootObject != null) {
-								resource.getContents().add(rootObject);
-							}
-
-							// Save the contents of the resource to the file system.
-							//
-							Map<Object, Object> options = new HashMap<Object, Object>();
-							// --Start manually modified code
-							options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-							// --End manually modified code
-							resource.save(options);
+			WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+				@Override
+				protected void execute(IProgressMonitor progressMonitor) {
+					try {
+						// Create a resource set
+						//
+						ResourceSet resourceSet = new ResourceSetImpl();
+						// Get the URI of the model file.
+						//
+						URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+						// Create a resource for this file.
+						//
+						Resource resource = resourceSet.createResource(fileURI);
+						// Add the initial model object to the contents.
+						//
+						EObject rootObject = createInitialModel();
+						if (rootObject != null) {
+							resource.getContents().add(rootObject);
 						}
-						catch (Exception exception) {
-							BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.log(exception);
-						}
-						finally {
-							progressMonitor.done();
-						}
+						// Save the contents of the resource to the file system.
+						//
+						Map<Object, Object> options = new HashMap<Object, Object>();
+						// --Start manually modified code
+						options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+						// --End manually modified code
+						resource.save(options);
 					}
-				};
-
+					catch (Exception exception) {
+						BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.log(exception);
+					}
+					finally {
+						progressMonitor.done();
+					}
+				}
+			};
 			getContainer().run(false, false, operation);
-
 			// Select the new file resource in the current view.
 			//
 			IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
@@ -279,26 +243,24 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 			final IWorkbenchPart activePart = page.getActivePart();
 			if (activePart instanceof ISetSelectionTarget) {
 				final ISelection targetSelection = new StructuredSelection(modelFile);
-				getShell().getDisplay().asyncExec
-					(new Runnable() {
-						 public void run() {
-							 ((ISetSelectionTarget)activePart).selectReveal(targetSelection);
-						 }
-					 });
+				getShell().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						((ISetSelectionTarget) activePart).selectReveal(targetSelection);
+					}
+				});
 			}
-
 			// Open an editor on the new file.
 			//
 			try {
-				page.openEditor
-					(new FileEditorInput(modelFile),
-					 workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());					 	 
+				page.openEditor(new FileEditorInput(modelFile),
+						workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
 			}
 			catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(), BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
+				MessageDialog.openError(workbenchWindow.getShell(),
+						BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"),
+						exception.getMessage());
 				return false;
 			}
-
 			return true;
 		}
 		catch (Exception exception) {
@@ -308,26 +270,26 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 	}
 
 	/**
-	 * This is the one page of the wizard.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is the one page of the wizard. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public class BPFieldOfActivityAnnotationsModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 		/**
-		 * Pass in the selection.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		public BPFieldOfActivityAnnotationsModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
+		public BPFieldOfActivityAnnotationsModelWizardNewFileCreationPage(String pageId,
+				IStructuredSelection selection) {
 			super(pageId, selection);
 		}
 
 		/**
-		 * The framework calls this to see if the file is correct.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The framework calls this to see if the file is correct. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		@Override
@@ -336,7 +298,8 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 				String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
 					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-					setErrorMessage(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
+					setErrorMessage(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString(key,
+							new Object[] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
 				return true;
@@ -345,8 +308,8 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		public IFile getModelFile() {
@@ -355,37 +318,32 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 	}
 
 	/**
-	 * This is the page where the type of object to create is selected.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This is the page where the type of object to create is selected. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public class BPFieldOfActivityAnnotationsModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		protected Combo initialObjectField;
-
 		/**
-		 * @generated
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * @generated <!-- begin-user-doc --> <!-- end-user-doc -->
 		 */
 		protected List<String> encodings;
-
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		protected Combo encodingField;
 
 		/**
-		 * Pass in the selection.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		public BPFieldOfActivityAnnotationsModelWizardInitialObjectCreationPage(String pageId) {
@@ -393,8 +351,8 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		public void createControl(Composite parent) {
@@ -404,23 +362,19 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 				layout.numColumns = 1;
 				layout.verticalSpacing = 12;
 				composite.setLayout(layout);
-
 				GridData data = new GridData();
 				data.verticalAlignment = GridData.FILL;
 				data.grabExcessVerticalSpace = true;
 				data.horizontalAlignment = GridData.FILL;
 				composite.setLayoutData(data);
 			}
-
 			Label containerLabel = new Label(composite, SWT.LEFT);
 			{
 				containerLabel.setText(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
-
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
 				containerLabel.setLayoutData(data);
 			}
-
 			initialObjectField = new Combo(composite, SWT.BORDER);
 			{
 				GridData data = new GridData();
@@ -428,20 +382,16 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 				data.grabExcessHorizontalSpace = true;
 				initialObjectField.setLayoutData(data);
 			}
-
 			for (String objectName : getInitialObjectNames()) {
 				initialObjectField.add(getLabel(objectName));
 			}
-
 			if (initialObjectField.getItemCount() == 1) {
 				initialObjectField.select(0);
 			}
 			initialObjectField.addModifyListener(validator);
-
 			Label encodingLabel = new Label(composite, SWT.LEFT);
 			{
 				encodingLabel.setText(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
-
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
 				encodingLabel.setLayoutData(data);
@@ -453,33 +403,29 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 				data.grabExcessHorizontalSpace = true;
 				encodingField.setLayoutData(data);
 			}
-
 			for (String encoding : getEncodings()) {
 				encodingField.add(encoding);
 			}
-
 			encodingField.select(0);
 			encodingField.addModifyListener(validator);
-
 			setPageComplete(validatePage());
 			setControl(composite);
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		protected ModifyListener validator =
-			new ModifyListener() {
-				public void modifyText(ModifyEvent e) {
-					setPageComplete(validatePage());
-				}
-			};
+		protected ModifyListener validator = new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				setPageComplete(validatePage());
+			}
+		};
 
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		protected boolean validatePage() {
@@ -487,8 +433,8 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		@Override
@@ -507,13 +453,12 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		public String getInitialObjectName() {
 			String label = initialObjectField.getText();
-
 			for (String name : getInitialObjectNames()) {
 				if (getLabel(name).equals(label)) {
 					return name;
@@ -523,8 +468,8 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		public String getEncoding() {
@@ -532,30 +477,32 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 		}
 
 		/**
-		 * Returns the label for the specified type name.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * Returns the label for the specified type name. <!-- begin-user-doc
+		 * --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		protected String getLabel(String typeName) {
 			try {
 				return BPFieldOfActivityAnnotationsEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
 			}
-			catch(MissingResourceException mre) {
+			catch (MissingResourceException mre) {
 				BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.log(mre);
 			}
 			return typeName;
 		}
 
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		protected Collection<String> getEncodings() {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
-				for (StringTokenizer stringTokenizer = new StringTokenizer(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
+				for (StringTokenizer stringTokenizer = new StringTokenizer(
+						BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE
+								.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -564,22 +511,25 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 	}
 
 	/**
-	 * The framework calls this to create the contents of the wizard.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The framework calls this to create the contents of the wizard. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-		@Override
+	@Override
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
 		newFileCreationPage = new BPFieldOfActivityAnnotationsModelWizardNewFileCreationPage("Whatever", selection);
-		newFileCreationPage.setTitle(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_BPFieldOfActivityAnnotationsModelWizard_label"));
-		newFileCreationPage.setDescription(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_BPFieldOfActivityAnnotationsModelWizard_description"));
-		newFileCreationPage.setFileName(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_BPFieldOfActivityAnnotationsEditorPluginFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
+		newFileCreationPage.setTitle(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE
+				.getString("_UI_BPFieldOfActivityAnnotationsModelWizard_label"));
+		newFileCreationPage.setDescription(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE
+				.getString("_UI_BPFieldOfActivityAnnotationsModelWizard_description"));
+		newFileCreationPage.setFileName(BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE
+				.getString("_UI_BPFieldOfActivityAnnotationsEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
-
-		// Try and get the resource selection to determine a current directory for the file dialog.
+		// Try and get the resource selection to determine a current directory
+		// for the file dialog.
 		//
 		if (selection != null && !selection.isEmpty()) {
 			// Get the resource...
@@ -588,24 +538,23 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 			if (selectedElement instanceof IResource) {
 				// Get the resource parent, if its a file.
 				//
-				IResource selectedResource = (IResource)selectedElement;
+				IResource selectedResource = (IResource) selectedElement;
 				if (selectedResource.getType() == IResource.FILE) {
 					selectedResource = selectedResource.getParent();
 				}
-
 				// This gives us a directory...
 				//
 				if (selectedResource instanceof IFolder || selectedResource instanceof IProject) {
 					// Set this for the container.
 					//
 					newFileCreationPage.setContainerFullPath(selectedResource.getFullPath());
-
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename = BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_BPFieldOfActivityAnnotationsEditorPluginFilenameDefaultBase");
+					String defaultModelBaseFilename = BPFieldOfActivityAnnotationsEditorPlugin.INSTANCE
+							.getString("_UI_BPFieldOfActivityAnnotationsEditorFilenameDefaultBase");
 					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
-					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
+					for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
 						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;
 					}
 					newFileCreationPage.setFileName(modelFilename);
@@ -613,21 +562,20 @@ public class BPFieldOfActivityAnnotationsModelWizard extends Wizard implements I
 			}
 		}
 		// --Start manually commented out code
-//		initialObjectCreationPage = new BpfieldofactivityannotationsModelWizardInitialObjectCreationPage("Whatever2");
-//		initialObjectCreationPage.setTitle(KAMPIntBIISFieldofactivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_BpfieldofactivityannotationsModelWizard_label"));
-//		initialObjectCreationPage.setDescription(KAMPIntBIISFieldofactivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
-//		addPage(initialObjectCreationPage);
+		// initialObjectCreationPage = new
+		// BpfieldofactivityannotationsModelWizardInitialObjectCreationPage("Whatever2");
+		// initialObjectCreationPage.setTitle(KAMPIntBIISFieldofactivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_BpfieldofactivityannotationsModelWizard_label"));
+		// initialObjectCreationPage.setDescription(KAMPIntBIISFieldofactivityAnnotationsEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+		// addPage(initialObjectCreationPage);
 		// --End manually commented out code
 	}
 
 	/**
-	 * Get the file from the page.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Get the file from the page. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public IFile getModelFile() {
 		return newFileCreationPage.getModelFile();
 	}
-
 }
