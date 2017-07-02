@@ -8,7 +8,7 @@ import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
 import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsRepository;
 import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPUserActionAnnotation;
 
-public class BPArchitecureAnnotationLookup {
+public class BPArchitectureAnnotationLookup {
 
 	public static Collection<BPUserActionAnnotation<?>> lookUpUserActionAnnotationsForUserAction(
 			BPFieldOfActivityAnnotationsRepository annotationRepository, 

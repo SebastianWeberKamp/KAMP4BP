@@ -12,7 +12,7 @@ import edu.kit.ipd.sdq.kamp.workplan.BasicActivity;
 import edu.kit.ipd.sdq.kamp4bp.core.BPActivityElementType;
 import edu.kit.ipd.sdq.kamp4bp.core.BPActivityType;
 import edu.kit.ipd.sdq.kamp4bp.core.BPArchitectureVersion;
-import edu.kit.ipd.sdq.kamp4bp.core.BPArchitecureAnnotationLookup;
+import edu.kit.ipd.sdq.kamp4bp.core.BPArchitectureAnnotationLookup;
 import edu.kit.ipd.sdq.kamp4is.core.derivation.AbstractISEnrichedWorkplanDerivation;
 import edu.kit.ipd.sdq.kamp4is.core.derivation.ISSubactivityDerivation;
 import edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsRepository;
@@ -67,7 +67,7 @@ public class BPEnrichedWorkplanDerivation extends AbstractISEnrichedWorkplanDeri
 				BPFieldOfActivityAnnotationsRepository annotationRepository = 
 						determineRelevantBPAnnotationRepository(activity, baseVersion, targetVersion);
 				if (annotationRepository != null) {
-					Collection<BPUserActionAnnotation<?>> userActionAnnotations = BPArchitecureAnnotationLookup.
+					Collection<BPUserActionAnnotation<?>> userActionAnnotations = BPArchitectureAnnotationLookup.
 							lookUpUserActionAnnotationsForUserAction(annotationRepository, userAction);
 					for (BPUserActionAnnotation<?> userActionAnnotation: userActionAnnotations) {
 						addBusinessProcessFollowupActivity(userActionAnnotation, userAction, activity);
