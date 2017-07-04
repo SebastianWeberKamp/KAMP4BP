@@ -84,8 +84,8 @@ public class BPArchitectureAnnotationLookup {
 			for (BPUserActionAnnotation<?> userActionAnnotation : annotationRepository.getBusinessProcessSpecification()
 					.getUserActionAnnotations()) {
 				if (userActionAnnotation instanceof BPMessage) {
-					if (((BPMessage) userActionAnnotation).getFirstActorStep() == actorStep
-							|| ((BPMessage) userActionAnnotation).getSecondActorStep() == actorStep) {
+					if (((BPMessage) userActionAnnotation).getSender() == actorStep
+							|| ((BPMessage) userActionAnnotation).getReceiver() == actorStep) {
 						messages.add(((BPMessage) userActionAnnotation));
 					}
 				}

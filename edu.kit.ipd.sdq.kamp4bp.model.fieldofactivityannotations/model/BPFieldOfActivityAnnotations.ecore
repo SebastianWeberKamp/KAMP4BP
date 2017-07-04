@@ -25,8 +25,8 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BPMessage">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="firstActorStep" eType="ecore:EClass ../../de.uhd.ifi.se.pcm.bppcm/model/bp.ecore#//bpusagemodel/ActorStep"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="secondActorStep" eType="ecore:EClass ../../de.uhd.ifi.se.pcm.bppcm/model/bp.ecore#//bpusagemodel/ActorStep"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sender" eType="ecore:EClass ../../de.uhd.ifi.se.pcm.bppcm/model/bp.ecore#//bpusagemodel/ActorStep"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" eType="ecore:EClass ../../de.uhd.ifi.se.pcm.bppcm/model/bp.ecore#//bpusagemodel/ActorStep"/>
     <eGenericSuperTypes eClassifier="#//BPUserActionAnnotation">
       <eTypeArguments eClassifier="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel/AbstractUserAction"/>
     </eGenericSuperTypes>

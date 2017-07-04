@@ -80,7 +80,9 @@ public class BPEnrichedWorkplanDerivation extends AbstractISEnrichedWorkplanDeri
 					activity.addFollowupActivity(new Activity(BPActivityType.BUSINESS_PROCESS,
 							BPActivityElementType.GOOD, good, good.getEntityName(), createCausingElementList(activity),
 							activity.getBasicActivity(),
-							"Modify " + BPActivityElementType.GOOD.getName() + " " + good.getEntityName()));
+							BPActivityElementType.ACTORSTEP.getName() + " \"" + activity.getElementName()
+									+ "\" works with " + BPActivityElementType.GOOD.getName() + " \""
+									+ good.getEntityName() + "\"."));
 				}
 			}
 			deriveBPGoodActivities(baseVersion, targetVersion, activity.getSubActivities());
@@ -99,8 +101,9 @@ public class BPEnrichedWorkplanDerivation extends AbstractISEnrichedWorkplanDeri
 					activity.addFollowupActivity(new Activity(BPActivityType.BUSINESS_PROCESS,
 							BPActivityElementType.TRAININGCOURSE, trainingCourse, trainingCourse.getEntityName(),
 							createCausingElementList(activity), activity.getBasicActivity(),
-							"Modify " + BPActivityElementType.TRAININGCOURSE.getName() + " "
-									+ trainingCourse.getEntityName()));
+							BPActivityElementType.ACTORSTEP.getName() + " \"" + activity.getElementName()
+									+ "\" changed; consider attending " + BPActivityElementType.TRAININGCOURSE.getName()
+									+ " \"" + trainingCourse.getEntityName() + "\"."));
 				}
 			}
 			deriveBPTrainingCourseActivities(baseVersion, targetVersion, activity.getSubActivities());
@@ -116,10 +119,23 @@ public class BPEnrichedWorkplanDerivation extends AbstractISEnrichedWorkplanDeri
 				Collection<BPMessage> messages = BPArchitectureAnnotationLookup
 						.lookUpBPMessagesForActorStep(annotationRepository, (ActorStep) activity.getElement());
 				for (BPMessage message : messages) {
+					String activityDescription = null;
+					if (message.getSender() == activity.getElement()) {
+						activityDescription = "Sending " + BPActivityElementType.ACTORSTEP.getName() + " \""
+								+ activity.getElementName() + "\" of " + BPActivityElementType.MESSAGE.getName() + " \""
+								+ message.getEntityName() + "\" changed.";
+					}
+					else if (message.getReceiver() == activity.getElement()) {
+						activityDescription = "Receiving " + BPActivityElementType.ACTORSTEP.getName() + " \""
+								+ activity.getElementName() + "\" of " + BPActivityElementType.MESSAGE.getName() + " \""
+								+ message.getEntityName() + "\" changed.";
+					}
+					else {
+						//ERROR
+					}
 					activity.addFollowupActivity(new Activity(BPActivityType.BUSINESS_PROCESS,
 							BPActivityElementType.MESSAGE, message, message.getEntityName(),
-							createCausingElementList(activity), activity.getBasicActivity(),
-							"Modify " + BPActivityElementType.MESSAGE.getName() + " " + message.getEntityName()));
+							createCausingElementList(activity), activity.getBasicActivity(), activityDescription));
 				}
 			}
 			deriveBPMessageActivities(baseVersion, targetVersion, activity.getSubActivities());
@@ -136,11 +152,13 @@ public class BPEnrichedWorkplanDerivation extends AbstractISEnrichedWorkplanDeri
 						.lookUpBPOrganizationalUnitsForAbstractUserAction(annotationRepository,
 								(AbstractUserAction) activity.getElement());
 				for (BPOrganizationalUnit organizationalUnit : organizationalUnits) {
-					activity.addFollowupActivity(new Activity(BPActivityType.BUSINESS_PROCESS,
-							BPActivityElementType.ORGANIZATIONALUNIT, organizationalUnit,
-							organizationalUnit.getEntityName(), createCausingElementList(activity),
-							activity.getBasicActivity(), "Modify " + BPActivityElementType.ORGANIZATIONALUNIT.getName()
-									+ " " + organizationalUnit.getEntityName()));
+					activity.addFollowupActivity(
+							new Activity(BPActivityType.BUSINESS_PROCESS, BPActivityElementType.ORGANIZATIONALUNIT,
+									organizationalUnit, organizationalUnit.getEntityName(),
+									createCausingElementList(activity), activity.getBasicActivity(),
+									BPActivityElementType.ACTORSTEP.getName() + " \"" + activity.getElementName()
+											+ "\" changed; " + BPActivityElementType.ORGANIZATIONALUNIT.getName()
+											+ " \"" + organizationalUnit.getEntityName() + "\" might be affected."));
 				}
 			}
 			deriveBPOrganizationalUnitActivities(baseVersion, targetVersion, activity.getSubActivities());

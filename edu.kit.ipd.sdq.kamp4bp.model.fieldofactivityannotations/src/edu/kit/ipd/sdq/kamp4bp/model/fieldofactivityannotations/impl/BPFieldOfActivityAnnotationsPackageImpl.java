@@ -232,7 +232,7 @@ public class BPFieldOfActivityAnnotationsPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBPMessage_FirstActorStep() {
+	public EReference getBPMessage_Sender() {
 		return (EReference)bpMessageEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -241,7 +241,7 @@ public class BPFieldOfActivityAnnotationsPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBPMessage_SecondActorStep() {
+	public EReference getBPMessage_Receiver() {
 		return (EReference)bpMessageEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -347,8 +347,8 @@ public class BPFieldOfActivityAnnotationsPackageImpl extends EPackageImpl implem
 		createEReference(bpGoodEClass, BP_GOOD__ACTOR_STEP);
 
 		bpMessageEClass = createEClass(BP_MESSAGE);
-		createEReference(bpMessageEClass, BP_MESSAGE__FIRST_ACTOR_STEP);
-		createEReference(bpMessageEClass, BP_MESSAGE__SECOND_ACTOR_STEP);
+		createEReference(bpMessageEClass, BP_MESSAGE__SENDER);
+		createEReference(bpMessageEClass, BP_MESSAGE__RECEIVER);
 
 		bpOrganizationalUnitEClass = createEClass(BP_ORGANIZATIONAL_UNIT);
 		createEReference(bpOrganizationalUnitEClass, BP_ORGANIZATIONAL_UNIT__ABSTRACT_USER_ACTION);
@@ -430,8 +430,8 @@ public class BPFieldOfActivityAnnotationsPackageImpl extends EPackageImpl implem
 		initEReference(getBPGood_ActorStep(), theBpusagemodelPackage.getActorStep(), null, "actorStep", null, 0, 1, BPGood.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bpMessageEClass, BPMessage.class, "BPMessage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBPMessage_FirstActorStep(), theBpusagemodelPackage.getActorStep(), null, "firstActorStep", null, 0, 1, BPMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBPMessage_SecondActorStep(), theBpusagemodelPackage.getActorStep(), null, "secondActorStep", null, 0, 1, BPMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBPMessage_Sender(), theBpusagemodelPackage.getActorStep(), null, "sender", null, 0, 1, BPMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBPMessage_Receiver(), theBpusagemodelPackage.getActorStep(), null, "receiver", null, 0, 1, BPMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bpOrganizationalUnitEClass, BPOrganizationalUnit.class, "BPOrganizationalUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBPOrganizationalUnit_AbstractUserAction(), theUsagemodelPackage.getAbstractUserAction(), null, "abstractUserAction", null, 0, 1, BPOrganizationalUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

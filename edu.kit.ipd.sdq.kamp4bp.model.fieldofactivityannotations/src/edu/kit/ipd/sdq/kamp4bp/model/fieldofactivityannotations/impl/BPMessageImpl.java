@@ -21,32 +21,31 @@ import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.impl.BPMessageImpl#getFirstActorStep <em>First Actor Step</em>}</li>
- *   <li>{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.impl.BPMessageImpl#getSecondActorStep <em>Second Actor Step</em>}</li>
+ *   <li>{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.impl.BPMessageImpl#getSender <em>Sender</em>}</li>
+ *   <li>{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.impl.BPMessageImpl#getReceiver <em>Receiver</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction> implements BPMessage {
 	/**
-	 * The cached value of the '{@link #getFirstActorStep() <em>First Actor Step</em>}' reference.
+	 * The cached value of the '{@link #getSender() <em>Sender</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFirstActorStep()
+	 * @see #getSender()
 	 * @generated
 	 * @ordered
 	 */
-	protected ActorStep firstActorStep;
+	protected ActorStep sender;
 	/**
-	 * The cached value of the '{@link #getSecondActorStep() <em>Second Actor Step</em>}' reference.
+	 * The cached value of the '{@link #getReceiver() <em>Receiver</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSecondActorStep()
+	 * @see #getReceiver()
 	 * @generated
 	 * @ordered
 	 */
-	protected ActorStep secondActorStep;
-
+	protected ActorStep receiver;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -71,16 +70,16 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActorStep getFirstActorStep() {
-		if (firstActorStep != null && firstActorStep.eIsProxy()) {
-			InternalEObject oldFirstActorStep = (InternalEObject)firstActorStep;
-			firstActorStep = (ActorStep)eResolveProxy(oldFirstActorStep);
-			if (firstActorStep != oldFirstActorStep) {
+	public ActorStep getSender() {
+		if (sender != null && sender.eIsProxy()) {
+			InternalEObject oldSender = (InternalEObject)sender;
+			sender = (ActorStep)eResolveProxy(oldSender);
+			if (sender != oldSender) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__FIRST_ACTOR_STEP, oldFirstActorStep, firstActorStep));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SENDER, oldSender, sender));
 			}
 		}
-		return firstActorStep;
+		return sender;
 	}
 
 	/**
@@ -88,8 +87,8 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActorStep basicGetFirstActorStep() {
-		return firstActorStep;
+	public ActorStep basicGetSender() {
+		return sender;
 	}
 
 	/**
@@ -97,11 +96,11 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFirstActorStep(ActorStep newFirstActorStep) {
-		ActorStep oldFirstActorStep = firstActorStep;
-		firstActorStep = newFirstActorStep;
+	public void setSender(ActorStep newSender) {
+		ActorStep oldSender = sender;
+		sender = newSender;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__FIRST_ACTOR_STEP, oldFirstActorStep, firstActorStep));
+			eNotify(new ENotificationImpl(this, Notification.SET, BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SENDER, oldSender, sender));
 	}
 
 	/**
@@ -109,16 +108,16 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActorStep getSecondActorStep() {
-		if (secondActorStep != null && secondActorStep.eIsProxy()) {
-			InternalEObject oldSecondActorStep = (InternalEObject)secondActorStep;
-			secondActorStep = (ActorStep)eResolveProxy(oldSecondActorStep);
-			if (secondActorStep != oldSecondActorStep) {
+	public ActorStep getReceiver() {
+		if (receiver != null && receiver.eIsProxy()) {
+			InternalEObject oldReceiver = (InternalEObject)receiver;
+			receiver = (ActorStep)eResolveProxy(oldReceiver);
+			if (receiver != oldReceiver) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SECOND_ACTOR_STEP, oldSecondActorStep, secondActorStep));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__RECEIVER, oldReceiver, receiver));
 			}
 		}
-		return secondActorStep;
+		return receiver;
 	}
 
 	/**
@@ -126,8 +125,8 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActorStep basicGetSecondActorStep() {
-		return secondActorStep;
+	public ActorStep basicGetReceiver() {
+		return receiver;
 	}
 
 	/**
@@ -135,11 +134,11 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSecondActorStep(ActorStep newSecondActorStep) {
-		ActorStep oldSecondActorStep = secondActorStep;
-		secondActorStep = newSecondActorStep;
+	public void setReceiver(ActorStep newReceiver) {
+		ActorStep oldReceiver = receiver;
+		receiver = newReceiver;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SECOND_ACTOR_STEP, oldSecondActorStep, secondActorStep));
+			eNotify(new ENotificationImpl(this, Notification.SET, BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__RECEIVER, oldReceiver, receiver));
 	}
 
 	/**
@@ -150,12 +149,12 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__FIRST_ACTOR_STEP:
-				if (resolve) return getFirstActorStep();
-				return basicGetFirstActorStep();
-			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SECOND_ACTOR_STEP:
-				if (resolve) return getSecondActorStep();
-				return basicGetSecondActorStep();
+			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SENDER:
+				if (resolve) return getSender();
+				return basicGetSender();
+			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__RECEIVER:
+				if (resolve) return getReceiver();
+				return basicGetReceiver();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -168,11 +167,11 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__FIRST_ACTOR_STEP:
-				setFirstActorStep((ActorStep)newValue);
+			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SENDER:
+				setSender((ActorStep)newValue);
 				return;
-			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SECOND_ACTOR_STEP:
-				setSecondActorStep((ActorStep)newValue);
+			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__RECEIVER:
+				setReceiver((ActorStep)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -186,11 +185,11 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__FIRST_ACTOR_STEP:
-				setFirstActorStep((ActorStep)null);
+			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SENDER:
+				setSender((ActorStep)null);
 				return;
-			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SECOND_ACTOR_STEP:
-				setSecondActorStep((ActorStep)null);
+			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__RECEIVER:
+				setReceiver((ActorStep)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -204,10 +203,10 @@ public class BPMessageImpl extends BPUserActionAnnotationImpl<AbstractUserAction
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__FIRST_ACTOR_STEP:
-				return firstActorStep != null;
-			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SECOND_ACTOR_STEP:
-				return secondActorStep != null;
+			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__SENDER:
+				return sender != null;
+			case BPFieldOfActivityAnnotationsPackage.BP_MESSAGE__RECEIVER:
+				return receiver != null;
 		}
 		return super.eIsSet(featureID);
 	}

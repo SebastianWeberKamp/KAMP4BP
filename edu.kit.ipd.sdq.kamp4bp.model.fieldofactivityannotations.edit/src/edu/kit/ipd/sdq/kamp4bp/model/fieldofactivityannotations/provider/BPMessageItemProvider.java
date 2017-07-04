@@ -43,26 +43,26 @@ public class BPMessageItemProvider extends BPUserActionAnnotationItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFirstActorStepPropertyDescriptor(object);
-			addSecondActorStepPropertyDescriptor(object);
+			addSenderPropertyDescriptor(object);
+			addReceiverPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the First Actor Step feature.
+	 * This adds a property descriptor for the Sender feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFirstActorStepPropertyDescriptor(Object object) {
+	protected void addSenderPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_BPMessage_firstActorStep_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_BPMessage_firstActorStep_feature", "_UI_BPMessage_type"),
-				 BPFieldOfActivityAnnotationsPackage.Literals.BP_MESSAGE__FIRST_ACTOR_STEP,
+				 getString("_UI_BPMessage_sender_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BPMessage_sender_feature", "_UI_BPMessage_type"),
+				 BPFieldOfActivityAnnotationsPackage.Literals.BP_MESSAGE__SENDER,
 				 true,
 				 false,
 				 true,
@@ -72,19 +72,19 @@ public class BPMessageItemProvider extends BPUserActionAnnotationItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Second Actor Step feature.
+	 * This adds a property descriptor for the Receiver feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSecondActorStepPropertyDescriptor(Object object) {
+	protected void addReceiverPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_BPMessage_secondActorStep_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_BPMessage_secondActorStep_feature", "_UI_BPMessage_type"),
-				 BPFieldOfActivityAnnotationsPackage.Literals.BP_MESSAGE__SECOND_ACTOR_STEP,
+				 getString("_UI_BPMessage_receiver_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BPMessage_receiver_feature", "_UI_BPMessage_type"),
+				 BPFieldOfActivityAnnotationsPackage.Literals.BP_MESSAGE__RECEIVER,
 				 true,
 				 false,
 				 true,

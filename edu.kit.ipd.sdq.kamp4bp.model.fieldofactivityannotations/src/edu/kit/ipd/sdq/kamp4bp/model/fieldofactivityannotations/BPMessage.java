@@ -14,8 +14,8 @@ import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getFirstActorStep <em>First Actor Step</em>}</li>
- *   <li>{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getSecondActorStep <em>Second Actor Step</em>}</li>
+ *   <li>{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getSender <em>Sender</em>}</li>
+ *   <li>{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getReceiver <em>Receiver</em>}</li>
  * </ul>
  *
  * @see edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsPackage#getBPMessage()
@@ -25,54 +25,54 @@ import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
 public interface BPMessage extends BPUserActionAnnotation<AbstractUserAction> {
 
 	/**
-	 * Returns the value of the '<em><b>First Actor Step</b></em>' reference.
+	 * Returns the value of the '<em><b>Sender</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>First Actor Step</em>' reference isn't clear,
+	 * If the meaning of the '<em>Sender</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>First Actor Step</em>' reference.
-	 * @see #setFirstActorStep(ActorStep)
-	 * @see edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsPackage#getBPMessage_FirstActorStep()
+	 * @return the value of the '<em>Sender</em>' reference.
+	 * @see #setSender(ActorStep)
+	 * @see edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsPackage#getBPMessage_Sender()
 	 * @model
 	 * @generated
 	 */
-	ActorStep getFirstActorStep();
+	ActorStep getSender();
 
 	/**
-	 * Sets the value of the '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getFirstActorStep <em>First Actor Step</em>}' reference.
+	 * Sets the value of the '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getSender <em>Sender</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>First Actor Step</em>' reference.
-	 * @see #getFirstActorStep()
+	 * @param value the new value of the '<em>Sender</em>' reference.
+	 * @see #getSender()
 	 * @generated
 	 */
-	void setFirstActorStep(ActorStep value);
+	void setSender(ActorStep value);
 
 	/**
-	 * Returns the value of the '<em><b>Second Actor Step</b></em>' reference.
+	 * Returns the value of the '<em><b>Receiver</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Second Actor Step</em>' reference isn't clear,
+	 * If the meaning of the '<em>Receiver</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Second Actor Step</em>' reference.
-	 * @see #setSecondActorStep(ActorStep)
-	 * @see edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsPackage#getBPMessage_SecondActorStep()
+	 * @return the value of the '<em>Receiver</em>' reference.
+	 * @see #setReceiver(ActorStep)
+	 * @see edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPFieldOfActivityAnnotationsPackage#getBPMessage_Receiver()
 	 * @model
 	 * @generated
 	 */
-	ActorStep getSecondActorStep();
+	ActorStep getReceiver();
 
 	/**
-	 * Sets the value of the '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getSecondActorStep <em>Second Actor Step</em>}' reference.
+	 * Sets the value of the '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getReceiver <em>Receiver</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Second Actor Step</em>' reference.
-	 * @see #getSecondActorStep()
+	 * @param value the new value of the '<em>Receiver</em>' reference.
+	 * @see #getReceiver()
 	 * @generated
 	 */
-	void setSecondActorStep(ActorStep value);
+	void setReceiver(ActorStep value);
 } // BPMessage

@@ -297,22 +297,22 @@ public interface BPFieldOfActivityAnnotationsPackage extends EPackage {
 	int BP_MESSAGE__ANNOTATED_USER_ACTIONS = BP_USER_ACTION_ANNOTATION__ANNOTATED_USER_ACTIONS;
 
 	/**
-	 * The feature id for the '<em><b>First Actor Step</b></em>' reference.
+	 * The feature id for the '<em><b>Sender</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BP_MESSAGE__FIRST_ACTOR_STEP = BP_USER_ACTION_ANNOTATION_FEATURE_COUNT + 0;
+	int BP_MESSAGE__SENDER = BP_USER_ACTION_ANNOTATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Second Actor Step</b></em>' reference.
+	 * The feature id for the '<em><b>Receiver</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BP_MESSAGE__SECOND_ACTOR_STEP = BP_USER_ACTION_ANNOTATION_FEATURE_COUNT + 1;
+	int BP_MESSAGE__RECEIVER = BP_USER_ACTION_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>BP Message</em>' class.
@@ -556,26 +556,26 @@ public interface BPFieldOfActivityAnnotationsPackage extends EPackage {
 	EClass getBPMessage();
 
 	/**
-	 * Returns the meta object for the reference '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getFirstActorStep <em>First Actor Step</em>}'.
+	 * Returns the meta object for the reference '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getSender <em>Sender</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>First Actor Step</em>'.
-	 * @see edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getFirstActorStep()
+	 * @return the meta object for the reference '<em>Sender</em>'.
+	 * @see edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getSender()
 	 * @see #getBPMessage()
 	 * @generated
 	 */
-	EReference getBPMessage_FirstActorStep();
+	EReference getBPMessage_Sender();
 
 	/**
-	 * Returns the meta object for the reference '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getSecondActorStep <em>Second Actor Step</em>}'.
+	 * Returns the meta object for the reference '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getReceiver <em>Receiver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Second Actor Step</em>'.
-	 * @see edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getSecondActorStep()
+	 * @return the meta object for the reference '<em>Receiver</em>'.
+	 * @see edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPMessage#getReceiver()
 	 * @see #getBPMessage()
 	 * @generated
 	 */
-	EReference getBPMessage_SecondActorStep();
+	EReference getBPMessage_Receiver();
 
 	/**
 	 * Returns the meta object for class '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.BPOrganizationalUnit <em>BP Organizational Unit</em>}'.
@@ -746,20 +746,20 @@ public interface BPFieldOfActivityAnnotationsPackage extends EPackage {
 		EClass BP_MESSAGE = eINSTANCE.getBPMessage();
 
 		/**
-		 * The meta object literal for the '<em><b>First Actor Step</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Sender</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BP_MESSAGE__FIRST_ACTOR_STEP = eINSTANCE.getBPMessage_FirstActorStep();
+		EReference BP_MESSAGE__SENDER = eINSTANCE.getBPMessage_Sender();
 
 		/**
-		 * The meta object literal for the '<em><b>Second Actor Step</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Receiver</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BP_MESSAGE__SECOND_ACTOR_STEP = eINSTANCE.getBPMessage_SecondActorStep();
+		EReference BP_MESSAGE__RECEIVER = eINSTANCE.getBPMessage_Receiver();
 
 		/**
 		 * The meta object literal for the '{@link edu.kit.ipd.sdq.kamp4bp.model.fieldofactivityannotations.impl.BPOrganizationalUnitImpl <em>BP Organizational Unit</em>}' class.
